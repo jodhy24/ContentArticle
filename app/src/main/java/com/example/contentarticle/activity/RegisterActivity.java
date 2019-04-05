@@ -42,11 +42,19 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (email.getText().toString().equals("") || password1.getText().toString().equals("") ||
-                username.getText().toString().equals("") || phone.getText().toString().equals("") ) {
+                        username.getText().toString().equals("") || phone.getText().toString().equals("")) {
                     Toast.makeText(RegisterActivity.this, "Harap Lengkapi Data", Toast.LENGTH_SHORT).show();
                 } else {
                     register();
                 }
+
+            }
+        });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
 
             }
         });
@@ -81,9 +89,9 @@ public class RegisterActivity extends AppCompatActivity {
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         finish();
 
-                        Toast.makeText(RegisterActivity.this,  result, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, result, Toast.LENGTH_SHORT).show();
                     } else if (result.equals("failed")) {
-                        Toast.makeText(RegisterActivity.this,  result, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, result, Toast.LENGTH_SHORT).show();
                     }
                 }
             }
