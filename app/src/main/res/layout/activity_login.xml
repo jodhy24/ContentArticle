@@ -41,6 +41,7 @@
                     android:layout_margin="10dp"
                     android:id="@+id/password1"
                     android:textColorHint="#FFF"
+                    android:inputType="textPassword"
                     android:hint="Password"
                     android:textColor="#FFF"
                     android:layout_width="match_parent"
