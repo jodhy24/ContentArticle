@@ -42,7 +42,6 @@ public class LoginActivity extends AppCompatActivity {
                 // Destroy Aplikasi
                 finish();
                 // bikin TOAST
-                Toast.makeText(LoginActivity.this, "Silahkan Login Terlebih Dahulu", Toast.LENGTH_SHORT).show();
             }
         });
 
