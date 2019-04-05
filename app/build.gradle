@@ -29,4 +29,9 @@ dependencies {
 
     // Librari cardview
     implementation 'com.android.support:cardview-v7:28.0.0'
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
 }
