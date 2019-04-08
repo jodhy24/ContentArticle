@@ -2,6 +2,7 @@ package com.example.contentarticle.activity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,8 +16,11 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.contentarticle.R;
+import com.example.contentarticle.helper.DatabaseClient;
+import com.example.contentarticle.model.room.Content;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -24,6 +28,7 @@ import java.util.Locale;
 
 public class AddActivity extends AppCompatActivity {
 
+    String status;
     ImageView back;
     TextView gender;
     RadioGroup radiogender;
@@ -59,13 +64,44 @@ public class AddActivity extends AppCompatActivity {
             }
         });
 
+        status = "";
+
         tanggal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(AddActivity.this, date, myCalendar
-                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
 
+            }
+        });
+
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (judul.getText().toString().equals("") || content.getText().toString().equals("") ||
+                tanggal.getText().toString().equals("") || phone.getText().toString().equals("")
+                 || status.equals("")) {
+                    Toast.makeText(AddActivity.this, "Lengkapi Data", Toast.LENGTH_SHORT).show();
+                } else {
+                    save();
+                    Toast.makeText(AddActivity.this, "Data Berhasil Disimpan", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+        });
+
+        radiogender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.male:
+                        status = "Male";
+                        break;
+                    case R.id.female:
+                        status = "Female";
+                        break;
+                }
             }
         });
     }
@@ -88,6 +124,47 @@ public class AddActivity extends AppCompatActivity {
         tanggal.setText(sdf.format(myCalendar.getTime()));
     }
 
+    private void save() {
+        final String mJudul = judul.getText().toString();
+        final String mContent = content.getText().toString();
+        final String mGender = status;
+        final String mPhone = phone.getText().toString();
+        final String mTanggal = tanggal.getText().toString();
 
 
+            // Ini untuk save database
+            class saveContent extends AsyncTask<Void, Void, Void> {
+
+                @Override
+                protected Void doInBackground(Void... voids) {
+                    Content content = new Content();
+                    content.setJudul(mJudul);
+                    content.setMycontent(mContent);
+                    content.setCategory(mGender);
+                    content.setTanggal(mTanggal);
+                    content.setPhone(mPhone);
+
+                    DatabaseClient.getInstance(
+                            getApplicationContext())
+                            .getAppDatabase()
+                            .contentDao()
+                            .insert(content);
+
+                    return null;
+                }
+
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                    super.onPostExecute(aVoid);
+
+                    Toast.makeText(AddActivity.this, "Data Berhasil Disimpan", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(AddActivity.this, HomeActivity.class));
+                    finish();
+                }
+
+            }
+
+            saveContent saveContent = new saveContent();
+            saveContent.execute();
+    }
 }
