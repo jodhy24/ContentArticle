@@ -19,7 +19,7 @@ public class DatabaseClient {
     private DatabaseClient(Context mCtx) {
         this.mCtx = mCtx;
 
-        appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, "Training").build();
+        appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, "ContentArticle").build();
     }
 
     /**
