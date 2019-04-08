@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#FFA500</item>
         <item name="colorPrimaryDark">#000000</item>
-        <item name="colorAccent">#000000</item>
+        <item name="colorAccent">#FFA500</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
