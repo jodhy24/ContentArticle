@@ -20,6 +20,7 @@ import com.example.contentarticle.R;
 import com.example.contentarticle.activity.AddActivity;
 import com.example.contentarticle.activity.DetailContentActivity;
 import com.example.contentarticle.activity.HomeActivity;
+import com.example.contentarticle.activity.UpdateActivity;
 import com.example.contentarticle.helper.DatabaseClient;
 import com.example.contentarticle.model.room.Content;
 
@@ -70,11 +71,21 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
 
             itemView.setOnClickListener(this);
 
+            imageedit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Content content = contentList.get(getAdapterPosition());
+                    Intent intent = new Intent(mContext, UpdateActivity.class);
+                    intent.putExtra("contentEdit", content);
+                    mContext.startActivity(intent);
+                    ((Activity)mContext).finish();
+                }
+            });
+
             imagedelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                    builder.setTitle("WARNING");
                     builder.setMessage("Are You Sure ?");
                     builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                         @Override
@@ -104,6 +115,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
             mContext.startActivity(intent);
             ((Activity)mContext).finish();
         }
+
 
 
     }

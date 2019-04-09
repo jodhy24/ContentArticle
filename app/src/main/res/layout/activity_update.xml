@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".activity.UpdateActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFA500"
+        app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:background="@drawable/ic_arrow_white"
+                android:layout_width="30dp"
+                android:id="@+id/backupdate"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                android:text="Update Content"></TextView>
+        </FrameLayout>
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/judulupdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Judul"
+                    android:layout_margin="10dp"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/genderupdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:layout_margin="10dp"
+                    android:textSize="25sp" />
+
+                <RadioGroup
+                    android:id="@+id/radiogenderupdate"
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton android:id="@+id/maleupdate"
+                        android:layout_width="wrap_content"
+                        android:textSize="25sp"
+                        android:layout_height="wrap_content"
+                        android:text="Male"/>
+                    <RadioButton android:id="@+id/femaleupdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"
+                        android:text="Female"/>
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/contentupdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Content"
+                    android:gravity="left"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:layout_margin="10dp"
+                    android:textSize="25sp" />
+
+                <EditText
+                    android:layout_margin="10dp"
+                    android:id="@+id/tanggalupdate"
+                    android:hint="Tanggal"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp" />
+
+                <EditText
+                    android:layout_margin="10dp"
+                    android:id="@+id/phoneupdate"
+                    android:inputType="number"
+                    android:hint="Phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp" />
+
+                <Button
+                    android:id="@+id/saveupdate"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#FFF"
+                    android:textSize="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Save" />
+
+
+            </LinearLayout>
+
+
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+

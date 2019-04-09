@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import com.example.contentarticle.model.room.Content;
 
@@ -20,4 +21,7 @@ public interface ContentDao {
 
     @Delete
     void delete (Content content);
+
+    @Update
+    void update (Content content);
 }
