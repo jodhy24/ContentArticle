@@ -1,6 +1,7 @@
 package com.example.contentarticle.dao;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
@@ -16,4 +17,7 @@ public interface ContentDao {
 
     @Query("SELECT * FROM content")
     List<Content> getAll();
+
+    @Delete
+    void delete (Content content);
 }
